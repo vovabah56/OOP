@@ -7,11 +7,12 @@ public class Player{
     private Team team;
     private ArrayList<Match> matches;
 
-    public Player(String playerName, int skill) {
+    public Player(String playerName, int skill, Team team) {
         this.playerName = playerName;
         //this.sport = sport;
         this.skill = skill;
-        //this.team = team;
+        this.team = team;
+        this.matches = new ArrayList<Match>();
     }
 
 
@@ -35,8 +36,8 @@ public class Player{
         this.skill = skill;
     }
 
-    public Team getTeam() {
-        return team;
+    public String getTeam() {
+        return team.getTeamName();
     }
 
     public void setTeam(Team team) {
