@@ -12,7 +12,7 @@ public class Tournament {
 
     private ArrayList<Match> Matchs;      //НОВОЕ СВОЙСТВО - ВСЕ ИГРЫ ЗА ТУРНИР
 
-    /*private TournamentGrid grid;*/
+    private TournamentGrid grid;
 
     public Tournament(String name, SportType sportType) {
         this.name = name;

@@ -28,7 +28,7 @@ public class Match {
         return arrayScore;
     }
 
-    public String whoWins() {
+    public Team whoWins() {
         int powerFirstTeam = 0;
         int powerSecondTeam = 0;
 
@@ -47,9 +47,9 @@ public class Match {
 
 
         if (powerFirstTeam > powerSecondTeam) {
-            return teamFirst.getTeamName();
+            return teamFirst;
         } else {
-            return teamSecond.getTeamName();
+            return teamSecond;
         }
     }
 }
