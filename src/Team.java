@@ -26,7 +26,7 @@ public class Team {
         return teamName;
     }
 
-    public void getLogo() throws IOException {
+    public void displayLogo(JPanel) throws IOException {
         BufferedImage image = ImageIO.read(new File(this.logo));
         Image logo =  image.getScaledInstance(500, 500, Image.SCALE_DEFAULT);
         JLabel picLabel = new JLabel(new ImageIcon(logo));
@@ -37,7 +37,7 @@ public class Team {
         display.add(jPanel);
         display.setVisible(true);
     }
-
+//    передавать jpanel, координаты, размер
     public void setLogo(String logo) {
         this.logo = logo;
     }
@@ -54,15 +54,7 @@ public class Team {
     public ArrayList<Player> getPlayers() {
         return players;
     }
-//Надо писать везде в функциях this.### или можно просто вызов переменной. То есть так:
-//    public void addPlayerByName(Player player) {
-//        this.players.add(player);
-//    }
-//
-//    public void deletePlayerByName(Player player) {
-//        this.players.remove(player);
-//    }
-// Или так?
+
     public void addPlayerByName(Player player) {
         players.add(player);
     }
@@ -73,5 +65,14 @@ public class Team {
 
     public ArrayList<Match> getMatches() {
         return matches;
+    }
+
+    public int getPower() {
+        int power = 0;
+
+        for (int i = 0; i < players.size(); ++i) {
+            power += players.get(i).getSkill();
+        }
+        return power;
     }
 }

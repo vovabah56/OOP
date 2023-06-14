@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.IOException;
 
 public class Main {
@@ -12,9 +13,8 @@ public class Main {
 
         Team spirit = new Team("Team_Spirit", "img/teamSpirit.jpg", "Winner TI10");
 
-        Player Max = new Player("Max N", 37, spirit);
-        Player Oleg = new Player("Oleg Mongol", 38, spirit);
-
+        Player Max = new Player("Max N", 15, spirit);
+        Player Oleg = new Player("Oleg Mongol", 60, spirit);
 //        System.out.println(Max.getPlayerName());
 //        Max.setSkill(1000);
 //        System.out.println(Max.getSkill());
@@ -27,9 +27,19 @@ public class Main {
 //            System.out.println(a.get(i).getPlayerName());
 //        }
 
-        virtus.addPlayerByName(Max);
-        spirit.addPlayerByName(Oleg);
-        Match b = new Match(spirit, virtus);
-        System.out.println(b.whoWins());
+//        virtus.addPlayerByName(Max);
+//        spirit.addPlayerByName(Oleg);
+//        Match b = new Match(spirit, virtus);
+//        System.out.println(b.defineWins());
+
+//        JLabel picLabel = new JLabel(new ImageIcon(spirit.getLogo()));
+//        JPanel jPanel = new JPanel();
+//        jPanel.add(picLabel);
+//        JFrame display = new JFrame();
+//        display.setSize(600, 600);
+//        display.add(jPanel);
+//        display.setVisible(true);
     }
+
+
 }
