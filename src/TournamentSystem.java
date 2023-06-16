@@ -7,7 +7,7 @@ public class TournamentSystem {
     private ArrayList<Tournament> tournaments = new ArrayList<>();
 
     public void displayTournamentSystem(){
-        JFrame jFrame = getJFrame();
+
 
     }
     public static JFrame getJFrame() {

@@ -26,11 +26,12 @@ public class Main {
 
         Tournament tournament;
         tournament = new Tournament("firstTournament", new  Football(), new RoundRobinGrid());
-        tournament.addTeam(spirit);
+
         tournament.addTeam(spirit2);
         tournament.addTeam(spirit3);
         tournament.addTeam(spirit4);
         tournament.addTeam(spirit5);
+        tournament.addTeam(spirit);
         tournament.addTeam(virtus);
         TournamentSystem tournamentSystem = new TournamentSystem();
         tournamentSystem.addTournament(tournament);

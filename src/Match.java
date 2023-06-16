@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class Match {
     private SportType sport;
     private Team teamFirst;
@@ -28,22 +30,14 @@ public class Match {
         return arrayScore;
     }
 
-    public Team whoWins() {
-        int powerFirstTeam = 0;
-        int powerSecondTeam = 0;
+    private int randomizePower(int power, int min, int max) {
+        int randomNumber = new Random().ints(min, max).findFirst().getAsInt();
+        return power * randomNumber;
+    }
+    public Team defineWins() {
 
-        for (int i = 0; i < teamFirst.getPlayers().size(); ++i) {
-            powerFirstTeam += teamFirst.getPlayers().get(i).getSkill();
-        }
-
-        for (int i = 0; i < teamSecond.getPlayers().size(); ++i) {
-            powerSecondTeam += teamSecond.getPlayers().get(i).getSkill();
-        }
-        int randomNumberFirst = new Random().ints(1, 6).findFirst().getAsInt();
-        powerFirstTeam = powerFirstTeam * randomNumberFirst;
-
-        int randomNumberSecond = new Random().ints(1, 6).findFirst().getAsInt();
-        powerSecondTeam = powerSecondTeam * randomNumberSecond;
+        int powerFirstTeam = randomizePower(teamFirst.getPower(), 1, 6);
+        int powerSecondTeam = randomizePower(teamSecond.getPower(), 1, 6);
 
 
         if (powerFirstTeam > powerSecondTeam) {
