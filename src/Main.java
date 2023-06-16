@@ -339,30 +339,120 @@ public class Main {
         sibir.addPlayerByName(sushkoMaxim);
 
 
+//        1Backetball Boston Celtics
+        Team bostonCeltics = new Team("Boston Celtics", "img/BostonCeltics.png", "Основан в 1946");
 
+        Player malcolmBrogdon = new Player("Malcolm Brogdon", new Backetball(), 36, bostonCeltics);
+        bostonCeltics.addPlayerByName(malcolmBrogdon);
+        Player jaylenBrown = new Player("Jaylen Brown", new Backetball(), 24, bostonCeltics);
+        bostonCeltics.addPlayerByName(jaylenBrown);
+        Player justinChampagnie = new Player("Justin Champagnie", new Backetball(), 34, bostonCeltics);
+        bostonCeltics.addPlayerByName(justinChampagnie);
+        Player lukeKornet = new Player("Luke Kornet", new Backetball(), 21, bostonCeltics);
+        bostonCeltics.addPlayerByName(lukeKornet);
+        Player derrickWhite = new Player("Derrick White", new Backetball(), 50, bostonCeltics);
+        bostonCeltics.addPlayerByName(derrickWhite);
 
+//        2Backetball Atlanta Hawks
+        Team atlantaHawks = new Team("Atlanta Hawks", "img/AtlantaHawks.png", "Основан в 1946");
 
+        Player saddiqBey = new Player("Saddiq Bey", new Backetball(), 41, atlantaHawks);
+        atlantaHawks.addPlayerByName(saddiqBey);
+        Player clintCapela = new Player("Clint Capela", new Backetball(), 14, atlantaHawks);
+        atlantaHawks.addPlayerByName(clintCapela);
+        Player trentForrest = new Player("Trent Forrest", new Backetball(), 26, atlantaHawks);
+        atlantaHawks.addPlayerByName(trentForrest);
+        Player aaronHoliday = new Player("Aaron Holiday", new Backetball(), 36, atlantaHawks);
+        atlantaHawks.addPlayerByName(aaronHoliday);
+        Player vitKrejci = new Player("Vit Krejci", new Backetball(), 54, atlantaHawks);
+        atlantaHawks.addPlayerByName(vitKrejci);
 
+//        3Backetball Miami Heat
+        Team miamiHeat = new Team("Miami Heat", "img/MiamiHeat.png", "Основан в 1988");
 
+        Player bamAdebay = new Player("Bam Adebay", new Backetball(), 38, miamiHeat);
+        miamiHeat.addPlayerByName(bamAdebay);
+        Player jamalCain = new Player("Jamal Cain", new Backetball(), 46, miamiHeat);
+        miamiHeat.addPlayerByName(jamalCain);
+        Player nikolaJovic = new Player("Nikola Jovic", new Backetball(), 21, miamiHeat);
+        miamiHeat.addPlayerByName(nikolaJovic);
+        Player victorOladipo = new Player("Victor Oladipo", new Backetball(), 43, miamiHeat);
+        miamiHeat.addPlayerByName(victorOladipo);
+        Player maxStrus = new Player("Max Strus", new Backetball(), 42, miamiHeat);
+        miamiHeat.addPlayerByName(maxStrus);
 
+//        4Backetball Milwaukee Bucks
+        Team milwaukeeBucks = new Team("Milwaukee Bucks", "img/MilwaukeeBucks.png", "Основан в 1968");
 
+        Player graysonAllen = new Player("Grayson Allen", new Backetball(), 39, milwaukeeBucks);
+        milwaukeeBucks.addPlayerByName(graysonAllen);
+        Player joeIngles = new Player("Joe Ingles", new Backetball(), 16, milwaukeeBucks);
+        milwaukeeBucks.addPlayerByName(joeIngles);
+        Player brookLopez = new Player("Brook Lopez", new Backetball(), 30, milwaukeeBucks);
+        milwaukeeBucks.addPlayerByName(brookLopez);
+        Player khrisMiddleton = new Player("Khris Middleton", new Backetball(), 48, milwaukeeBucks);
+        milwaukeeBucks.addPlayerByName(khrisMiddleton);
+        Player jaeCrowder = new Player("Jae Crowder", new Backetball(), 37, milwaukeeBucks);
+        milwaukeeBucks.addPlayerByName(jaeCrowder);
 
+//        5Backetball New York Knicks
+        Team newYorkKnicks = new Team("New York Knicks", "img/NewYorkKnicks.png", "Основан в 1946");
 
+        Player rJBarrett = new Player("RJ Barrett", new Backetball(), 32, newYorkKnicks);
+        newYorkKnicks.addPlayerByName(rJBarrett);
+        Player jalenBrunson = new Player("Jalen Brunson", new Backetball(), 29, newYorkKnicks);
+        newYorkKnicks.addPlayerByName(jalenBrunson);
+        Player joshHart = new Player("Josh Hart", new Backetball(), 55, newYorkKnicks);
+        newYorkKnicks.addPlayerByName(joshHart);
+        Player trevorKeels = new Player("Trevor Keels", new Backetball(), 27, newYorkKnicks);
+        newYorkKnicks.addPlayerByName(trevorKeels);
+        Player mitchellRobinson = new Player("Mitchell Robinsont", new Backetball(), 47, newYorkKnicks);
+        newYorkKnicks.addPlayerByName(mitchellRobinson);
 
+//        6Backetball Denver Nuggets
+        Team denverNuggets = new Team("Denver Nuggets", "img/DenverNuggets.png", "Основан в 1967");
 
+        Player deAndreJordan = new Player("DeAndre Jordan", new Backetball(), 40, denverNuggets);
+        denverNuggets.addPlayerByName(deAndreJordan);
+        Player reggieJackson = new Player("Reggie Jackson", new Backetball(), 45, denverNuggets);
+        denverNuggets.addPlayerByName(reggieJackson);
+        Player jamalMurray = new Player("Jamal Murray", new Backetball(), 26, denverNuggets);
+        denverNuggets.addPlayerByName(jamalMurray);
+        Player kentaviousCaldwellPope = new Player("Kentavious Caldwell-Pope", new Backetball(), 18, denverNuggets);
+        denverNuggets.addPlayerByName(kentaviousCaldwellPope);
+        Player thomasBryant = new Player("Thomas Bryant", new Backetball(), 32, denverNuggets);
+        denverNuggets.addPlayerByName(thomasBryant);
 
+//        7Backetball Chicago Bulls
+        Team chicagoBulls = new Team("Chicago Bulls", "img/ChicagoBulls.png", "Основан в 1966");
 
+        Player patrickBeverley = new Player("Patrick Beverley", new Backetball(), 55, chicagoBulls);
+        chicagoBulls.addPlayerByName(patrickBeverley);
+        Player ayoDosunmu = new Player("Ayo Dosunmu", new Backetball(), 42, chicagoBulls);
+        chicagoBulls.addPlayerByName(ayoDosunmu);
+        Player andreDrummond = new Player("Andre Drummond", new Backetball(), 35, chicagoBulls);
+        chicagoBulls.addPlayerByName(andreDrummond);
+        Player carlikJones = new Player("Carlik Jones", new Backetball(), 18, chicagoBulls);
+        chicagoBulls.addPlayerByName(carlikJones);
+        Player patrickWilliams = new Player("Patrick Williams", new Backetball(), 14, chicagoBulls);
+        chicagoBulls.addPlayerByName(patrickWilliams);
 
+//        8Backetball Toronto Raptors
+        Team torontoRaptors = new Team("Toronto Raptors", "img/TorontoRaptors.png", "Основан в 1995");
 
+        Player preciousAchiuwa = new Player("Precious Achiuwa", new Backetball(), 28, torontoRaptors);
+        torontoRaptors.addPlayerByName(preciousAchiuwa);
+        Player oGAnunoby = new Player("O.G. Anunoby", new Backetball(), 39, torontoRaptors);
+        torontoRaptors.addPlayerByName(oGAnunoby);
+        Player scottieBarnes = new Player("Scottie Barnes", new Backetball(), 36, torontoRaptors);
+        torontoRaptors.addPlayerByName(scottieBarnes);
+        Player chrisBoucher = new Player("Chris Boucher", new Backetball(), 24, torontoRaptors);
+        torontoRaptors.addPlayerByName(chrisBoucher);
+        Player pascalSiakam = new Player("Pascal Siakam", new Backetball(), 27, torontoRaptors);
+        torontoRaptors.addPlayerByName(pascalSiakam);
 
 
         Team virtus = new Team("Virtus_Pro", "img/Virtus.proLogo.png", "My mind is empty, i dont understand anythink");
-
-//        virtus.getLogo();
-//        System.out.println(virtus.getTeamName());
-//        System.out.println(virtus.getDescription());
-//        virtus.setDescription("I love your house");
-//        System.out.println(virtus.getDescription());
 
         Team spirit = new Team("Team_Spirit", "img/teamSpirit.jpg", "Winner TI10");
         Team spirit2 = new Team("Team_Spirit2", "img/teamSpirit.jpg", "2Winner TI10");
@@ -379,19 +469,21 @@ public class Main {
 
 
         Tournament tournament;
-        tournament = new Tournament("firstTournament", new  Football(), new RoundRobinGrid());
+        tournament = new Tournament("firstTournament", new  Football(), new SingleElimination());
 
-        tournament.addTeam(spirit2);
-        tournament.addTeam(spirit3);
-        tournament.addTeam(spirit4);
-        tournament.addTeam(spirit5);
-        tournament.addTeam(spirit);
-        tournament.addTeam(virtus);
+        tournament.addTeam(manchester);
+        tournament.addTeam(spartak);
+        tournament.addTeam(torpedo);
+        tournament.addTeam(krylyaSovetov);
+        tournament.addTeam(orenburg);
+        tournament.addTeam(kamAZ);
+        tournament.addTeam(akronTogliatti);
+        tournament.addTeam(khimki);
         TournamentSystem tournamentSystem = new TournamentSystem();
         tournamentSystem.addTournament(tournament);
 //       tournamentSystem.displayTournamentSystem();
-//        tournament.displayTournament();
-        Menu.MainMenu();
+        tournament.displayTournament();
+//        Menu.MainMenu();
 
 
 
