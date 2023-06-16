@@ -8,6 +8,7 @@ public class Match {
     private Team teamFirst;
     private Team teamSecond;
     private ArrayList<Integer> arrayScore = new ArrayList<Integer>();
+    private Team winner = null;
 
     public Match(Team teamFirst, Team teamSecond) {
         this.teamFirst = teamFirst;
@@ -26,6 +27,11 @@ public class Match {
         return teamSecond;
     }
 
+    public Team getWinner() {
+        if(winner == null) return defineWins();
+        return winner;
+    }
+
     public ArrayList<Integer> getArrayScore() {
         return arrayScore;
     }
@@ -34,6 +40,7 @@ public class Match {
         int randomNumber = new Random().ints(min, max).findFirst().getAsInt();
         return power * randomNumber;
     }
+
     public Team defineWins() {
 
         int powerFirstTeam = randomizePower(teamFirst.getPower(), 1, 6);
@@ -41,8 +48,10 @@ public class Match {
 
 
         if (powerFirstTeam > powerSecondTeam) {
+            winner =teamFirst;
             return teamFirst;
         } else {
+            winner = teamSecond;
             return teamSecond;
         }
     }

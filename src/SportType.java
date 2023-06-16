@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SportType {
+public abstract class SportType {
     private int howManyOnTeam;
     private double timeOnGame;
 
@@ -11,6 +11,7 @@ public class SportType {
     public double getTimeOnGame() {
         return timeOnGame;
     }
+    abstract public Boolean checkTeam(Team team);
 
 //    public boolean checkTeam(Team teamFirst, Team teamSecond) {
 //        ArrayList<Player> arrayPlayersFirstTeam = teamFirst.getPlayers();
@@ -20,11 +21,11 @@ public class SportType {
 //    }
 }
 
-class Football extends SportType{
+class Football extends SportType {
     int howManyOnTeam = 11;
     int sportID = 1;
     double timeOnGame = 90.0;
-    public boolean checkTeam(Team team) {
+    public Boolean checkTeam(Team team) {
        ArrayList<Player> arrayPlayers = team.getPlayers();
        if(arrayPlayers.size() != 11){
            return false;

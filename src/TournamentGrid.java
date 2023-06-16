@@ -7,7 +7,7 @@ public abstract class TournamentGrid {
     protected Vector<Vector<String>> resultMatchs = new Vector<Vector<String>>();
     protected Boolean isFinished;
     JTable gridUI;
-    protected Vector<Vector<Match>> matchs;
+    protected Vector<Vector<Match>> matches = new Vector<>();
     public Boolean getFinished() {
         return isFinished;
     }
@@ -17,12 +17,6 @@ public abstract class TournamentGrid {
     }
 
     public abstract Vector<Vector<Match>> generateGrid(Tournament tournament);
-
-    public JTable generateGridUI(){
-        return new JTable();
-    }
-
-
     public abstract JTable generateGridUI(Tournament tournament);
     public abstract void setResultInGrid();
     public abstract String getWinner();

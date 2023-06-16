@@ -76,7 +76,7 @@ public class Tournament {
         return isFinished;
     }
 
-    public ArrayList<Team> getParticirants() {
+    public ArrayList<Team> getParticipants() {
         return Participants;
     }
 
@@ -91,14 +91,13 @@ public class Tournament {
     public void addTeam(Team team) {
         if (Participants.contains(team)) return;
         Participants.add(team);
+
         if (teamsName.isEmpty()) {
             teamsName.add("  ");
             teamsName.add(team.getTeamName());
-
         } else {
             teamsName.add(team.getTeamName());
         }
-
     }
 
     public void removeTeam(Team team) {
@@ -107,6 +106,12 @@ public class Tournament {
         }
     }
 
+    public Boolean checkParticipants(){
+        for(int i = 0; i < Participants.size(); i++){
+            if(!sportType.checkTeam(Participants.get(i))) return false;
+        }
+        return true;
+    }
 
 
     public void addMatch(Match match) {
@@ -118,7 +123,8 @@ public class Tournament {
     public void startTour() throws IOException {
         grid.generateGrid(this);
         grid.setResultInGrid();
-        jFrame.add(new Label("Победитель: Тут будет победитель"), BorderLayout.NORTH);
+        jFrame.add(new Label("Победитель: " + grid.getWinner()), BorderLayout.NORTH);
         displayTournament();
+        isFinished = true;
     }
 }
