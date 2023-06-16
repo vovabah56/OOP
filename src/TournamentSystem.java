@@ -3,15 +3,16 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class TournamentSystem {
-
+    private static JFrame jFrame = new JFrame();
     private ArrayList<Tournament> tournaments = new ArrayList<>();
 
     public void displayTournamentSystem(){
-        JFrame jFrame = getJFrame();
+        getJFrame();
 
     }
+
     public static JFrame getJFrame() {
-        JFrame jFrame = new JFrame();
+
         jFrame.setVisible(true);
         jFrame.setSize(500, 300);
         jFrame.setTitle("Tournament System");

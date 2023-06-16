@@ -1,9 +1,8 @@
+
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,55 +11,30 @@ import java.util.*;
 public class Tournament {
     private Boolean isFinished;
     private ArrayList<Team> Participants;
-    private Vector<String> teamsName = new Vector<>();
+    public Vector<String> teamsName = new Vector<>();
+    private final TournamentGrid grid;
+    private final SportType sportType;
 
-    private SportType sportType;
     public void displayTournament() throws IOException {
-        JFrame jFrame = getJFrame();
+        getJFrame();
+        jFrame.setVisible(true);
+
     }
 
-    private JFrame getJFrame() throws IOException {
-        JFrame jFrame = new JFrame("Tournament");
+    JFrame jFrame = new JFrame("Tournament");
+
+    private void getJFrame() throws IOException {
+
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(1500, 900);
-
-
+        jFrame.setSize(1500, 700);
 
         jFrame.setLayout(new BorderLayout());
         JPanel jPanel = new JPanel(new GridLayout(Participants.size(), 1));
-        Vector<Vector<String>> a = new Vector<Vector<String>>();
 
-
-        for (int i = 0; i < teamsName.size(); i++){
-            Vector vasyan_info = new Vector();
-
-            vasyan_info.add(teamsName.get(i));
-
-            for (int j = 0; j < Participants.size()+1; j++){
-                if(i == 0 && j < Participants.size()){
-
-                    vasyan_info.add(Participants.get(j).getTeamName());
-                }
-                else{
-                    if(i == j+1){
-                        vasyan_info.add("---");
-                    }
-                    else{
-                        vasyan_info.add("0");
-                    }
-                }
-            }
-            a.add(vasyan_info);
-        }
-
-        JTable grid = new JTable(a, teamsName);
-
-        for (int i = 0; i < Participants.size(); i++){
-
-            BufferedImage image;
-            image = ImageIO.read(new File("img\\teamSpirit.jpg"));
-            Image logo =  image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        for (int i = 0; i < Participants.size(); i++) {
+            BufferedImage image = ImageIO.read(new File("img\\teamSpirit.jpg"));
+            Image logo = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             JLabel picLabel = new JLabel(new ImageIcon(logo));
             JLabel descriptionLabel1 = new JLabel(Participants.get(i).getDescription());
             JPanel f = new JPanel();
@@ -73,27 +47,20 @@ public class Tournament {
             jPanel.add(f, BorderLayout.WEST);
         }
 
-        jFrame.add(jPanel,  BorderLayout.WEST);
+        jFrame.add(jPanel, BorderLayout.WEST);
 
-        jFrame.add(grid, BorderLayout.CENTER);
+        jFrame.add(grid.generateGridUI(this), BorderLayout.CENTER);
 
         JButton startTournament = new JButton("Start");
-        startTournament.setMaximumSize(new Dimension(100, 100));
-        startTournament.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // тут будет код который будет выполнятся при нажатии на кнопку
-            }
-        });
+        startTournament.addActionListener(new GridUI(this));
+
         jFrame.add(startTournament, BorderLayout.EAST);
-        return jFrame;
     }
 
-    private String name;
+    private final String name;
 
     private ArrayList<Match> Matchs;      //НОВОЕ СВОЙСТВО - ВСЕ ИГРЫ ЗА ТУРНИР
 
-    private TournamentGrid grid;
 
     public Tournament(String name, SportType sportType, TournamentGrid grid) {
         this.name = name;
@@ -102,13 +69,14 @@ public class Tournament {
         this.Participants = new ArrayList<Team>();
         this.Matchs = new ArrayList<Match>();
         this.grid = grid;
+
     }
 
     public Boolean getFinished() {
         return isFinished;
     }
 
-    public ArrayList<Team> getParticirants() {
+    public ArrayList<Team> getParticipants() {
         return Participants;
     }
 
@@ -123,26 +91,28 @@ public class Tournament {
     public void addTeam(Team team) {
         if (Participants.contains(team)) return;
         Participants.add(team);
-        if(teamsName.isEmpty()){
+
+        if (teamsName.isEmpty()) {
             teamsName.add("  ");
             teamsName.add(team.getTeamName());
-            System.out.println(1234);
-        }
-        else {
+        } else {
             teamsName.add(team.getTeamName());
         }
-
     }
 
     public void removeTeam(Team team) {
-        if(Participants.contains(team)) {
+        if (Participants.contains(team)) {
             Participants.remove(team);
         }
     }
 
-    public void setSport(SportType sportType) {
-        this.sportType = sportType;
+    public Boolean checkParticipants(){
+        for(int i = 0; i < Participants.size(); i++){
+            if(!sportType.checkTeam(Participants.get(i))) return false;
+        }
+        return true;
     }
+
 
     public void addMatch(Match match) {
         if (Matchs.contains(match)) return;
@@ -150,26 +120,11 @@ public class Tournament {
     }
 
 
-    // Временно, пока нет сеток
-    public Team getWinner() {
-        ArrayList<Integer> cntWin = new ArrayList<>(Participants.size());
-
-        for (int i = 0; i < Participants.size(); i++) {
-            cntWin.add(0);
-        }
-
-        // проходим по всем матчам и увеличиваем значение в индексе победителя
-        for (int i = 0; i < Matchs.size(); i++) {
-            int t = cntWin.get(Participants.indexOf(Matchs.get(i).defineWins()));
-            cntWin.set(Participants.indexOf(Matchs.get(i).defineWins()), t + 1);
-        }
-
-        // возвращаем команду с наибольшим количеством побед
-        return Participants.get(cntWin.indexOf(Collections.max(cntWin)));
-    }
-
-    public void startTour(){
+    public void startTour() throws IOException {
         grid.generateGrid(this);
-
+        grid.setResultInGrid();
+        jFrame.add(new Label("Победитель: " + grid.getWinner()), BorderLayout.NORTH);
+        displayTournament();
+        isFinished = true;
     }
 }
