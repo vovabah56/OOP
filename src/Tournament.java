@@ -160,8 +160,8 @@ public class Tournament {
 
         // проходим по всем матчам и увеличиваем значение в индексе победителя
         for (int i = 0; i < Matchs.size(); i++) {
-            int t = cntWin.get(Participants.indexOf(Matchs.get(i).whoWins()));
-            cntWin.set(Participants.indexOf(Matchs.get(i).whoWins()), t + 1);
+            int t = cntWin.get(Participants.indexOf(Matchs.get(i).defineWins()));
+            cntWin.set(Participants.indexOf(Matchs.get(i).defineWins()), t + 1);
         }
 
         // возвращаем команду с наибольшим количеством побед

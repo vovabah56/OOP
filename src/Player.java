@@ -7,9 +7,9 @@ public class Player{
     private Team team;
     private ArrayList<Match> matches;
 
-    public Player(String playerName, int skill, Team team) {
+    public Player(String playerName, SportType sport, int skill, Team team) {
         this.playerName = playerName;
-        //this.sport = sport;
+        this.sport = sport;
         this.skill = skill;
         this.team = team;
         this.matches = new ArrayList<Match>();
