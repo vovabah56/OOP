@@ -11,25 +11,34 @@ public class Main {
 //        System.out.println(virtus.getDescription());
 
         Team spirit = new Team("Team_Spirit", "img/teamSpirit.jpg", "Winner TI10");
+        Team spirit2 = new Team("Team_Spirit2", "img/teamSpirit.jpg", "2Winner TI10");
+        Team spirit3 = new Team("Team_Spirit3", "img/teamSpirit.jpg", "3Winner TI10");
+        Team spirit4 = new Team("Team_Spirit4", "img/teamSpirit.jpg", "4Winner TI10");
+        Team spirit5 = new Team("Team_Spirit55", "img/teamSpirit.jpg", "4Winner T0i0I10");
 
         Player Max = new Player("Max N", 37, spirit);
         Player Oleg = new Player("Oleg Mongol", 38, spirit);
 
-//        System.out.println(Max.getPlayerName());
-//        Max.setSkill(1000);
-//        System.out.println(Max.getSkill());
-//        System.out.println(Max.getMatches());
-//        spirit.addPlayerByName(Max);
-//        spirit.addPlayerByName(Oleg);
-//        spirit.deletePlayerByName(Max);
-//        ArrayList<Player> a = spirit.getPlayers();
-//        for (int i = 0; i < a.size(); i++) {
-//            System.out.println(a.get(i).getPlayerName());
-//        }
 
         virtus.addPlayerByName(Max);
         spirit.addPlayerByName(Oleg);
-        Match b = new Match(spirit, virtus);
-        System.out.println(b.whoWins());
+
+
+        Tournament tournament;
+        tournament = new Tournament("firstTournament", new  Football(), new RoundRobinGrid());
+        tournament.addTeam(spirit);
+        tournament.addTeam(spirit2);
+        tournament.addTeam(spirit3);
+        tournament.addTeam(spirit4);
+        tournament.addTeam(spirit5);
+        tournament.addTeam(virtus);
+        TournamentSystem tournamentSystem = new TournamentSystem();
+        tournamentSystem.addTournament(tournament);
+//       tournamentSystem.displayTournamentSystem();
+        tournament.displayTournament();
+
+
+
+
     }
 }
