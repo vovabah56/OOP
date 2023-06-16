@@ -12,9 +12,8 @@ public class Tournament {
     private Boolean isFinished;
     private ArrayList<Team> Participants;
     public Vector<String> teamsName = new Vector<>();
-    private TournamentGrid grid;
-    private SportType sportType;
-    private Tournament tournament;
+    private final TournamentGrid grid;
+    private final SportType sportType;
 
     public void displayTournament() throws IOException {
         getJFrame();
@@ -24,7 +23,7 @@ public class Tournament {
 
     JFrame jFrame = new JFrame("Tournament");
 
-    private JFrame getJFrame() throws IOException {
+    private void getJFrame() throws IOException {
 
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,10 +55,9 @@ public class Tournament {
         startTournament.addActionListener(new GridUI(this));
 
         jFrame.add(startTournament, BorderLayout.EAST);
-        return jFrame;
     }
 
-    private String name;
+    private final String name;
 
     private ArrayList<Match> Matchs;      //НОВОЕ СВОЙСТВО - ВСЕ ИГРЫ ЗА ТУРНИР
 
@@ -71,7 +69,7 @@ public class Tournament {
         this.Participants = new ArrayList<Team>();
         this.Matchs = new ArrayList<Match>();
         this.grid = grid;
-        tournament = this;
+
     }
 
     public Boolean getFinished() {
@@ -109,9 +107,7 @@ public class Tournament {
         }
     }
 
-    public void setSport(SportType sportType) {
-        this.sportType = sportType;
-    }
+
 
     public void addMatch(Match match) {
         if (Matchs.contains(match)) return;
