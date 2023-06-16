@@ -20,8 +20,8 @@ public class Tournament {
         jFrame.setVisible(true);
 
     }
-
-    JFrame jFrame = new JFrame("Tournament");
+    private String name = null;
+    JFrame jFrame = new JFrame(name);
 
     private void getJFrame() throws IOException {
 
@@ -33,7 +33,7 @@ public class Tournament {
         JPanel jPanel = new JPanel(new GridLayout(Participants.size(), 1));
 
         for (int i = 0; i < Participants.size(); i++) {
-            BufferedImage image = ImageIO.read(new File("img\\teamSpirit.jpg"));
+            BufferedImage image = ImageIO.read(new File(Participants.get(i).getLogo()));
             Image logo = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             JLabel picLabel = new JLabel(new ImageIcon(logo));
             JLabel descriptionLabel1 = new JLabel(Participants.get(i).getDescription());
@@ -57,7 +57,7 @@ public class Tournament {
         jFrame.add(startTournament, BorderLayout.EAST);
     }
 
-    private final String name;
+
 
     private ArrayList<Match> Matchs;      //НОВОЕ СВОЙСТВО - ВСЕ ИГРЫ ЗА ТУРНИР
 
@@ -121,6 +121,7 @@ public class Tournament {
 
 
     public void startTour() throws IOException {
+
         grid.generateGrid(this);
         grid.setResultInGrid();
         jFrame.add(new Label("Победитель: " + grid.getWinner()), BorderLayout.NORTH);
