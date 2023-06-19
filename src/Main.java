@@ -1,4 +1,5 @@
 import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) throws IOException {
 //              1Football manchester
@@ -452,7 +453,14 @@ public class Main {
         torontoRaptors.addPlayerByName(pascalSiakam);
 
 
+
         Team virtus = new Team("Virtus_Pro", "img/Virtus.proLogo.png", "My mind is empty, i dont understand anythink");
+
+//        virtus.getLogo();
+//        System.out.println(virtus.getTeamName());
+//        System.out.println(virtus.getDescription());
+//        virtus.setDescription("I love your house");
+//        System.out.println(virtus.getDescription());
 
         Team spirit = new Team("Team_Spirit", "img/teamSpirit.jpg", "Winner TI10");
         Team spirit2 = new Team("Team_Spirit2", "img/teamSpirit.jpg", "2Winner TI10");
@@ -462,10 +470,37 @@ public class Main {
 
         Player Max = new Player("Max N", new Football(), 37, spirit);
         Player Oleg = new Player("Oleg Mongol", new Football(), 38, spirit);
-
+        TournamentSystem tournamentSystem = new TournamentSystem();
 
         virtus.addPlayerByName(Max);
         spirit.addPlayerByName(Oleg);
+
+
+
+        tournamentSystem.addTeam(amur);
+        tournamentSystem.addTeam(akBars);
+        tournamentSystem.addTeam(avtomobilist);
+        tournamentSystem.addTeam(akronTogliatti);
+        tournamentSystem.addTeam(atlantaHawks);
+        tournamentSystem.addTeam(bostonCeltics);
+        tournamentSystem.addTeam(cska);
+        tournamentSystem.addTeam(chicagoBulls);
+        tournamentSystem.addTeam(denverNuggets);
+        tournamentSystem.addTeam(manchester);
+        tournamentSystem.addTeam(krylyaSovetov);
+        tournamentSystem.addTeam(miamiHeat);
+        tournamentSystem.addTeam(khimki);
+        tournamentSystem.addTeam(kamAZ);
+        tournamentSystem.addTeam(lokomotiv);
+        tournamentSystem.addTeam(metallurg);
+        tournamentSystem.addTeam(milwaukeeBucks);
+        tournamentSystem.addTeam(newYorkKnicks);
+        tournamentSystem.addTeam(orenburg);
+        tournamentSystem.addTeam(torontoRaptors);
+        tournamentSystem.addTeam(torpedo);
+        tournamentSystem.addTeam(traktor);
+        tournamentSystem.addTeam(spartak);
+        tournamentSystem.addTeam(sibir);
 
 
         Tournament tournament;
@@ -479,11 +514,10 @@ public class Main {
         tournament.addTeam(kamAZ);
         tournament.addTeam(akronTogliatti);
         tournament.addTeam(khimki);
-        TournamentSystem tournamentSystem = new TournamentSystem();
-        tournamentSystem.addTournament(tournament);
+
 //       tournamentSystem.displayTournamentSystem();
-        tournament.displayTournament();
-//        Menu.MainMenu();
+
+       Menu.MainMenu(tournamentSystem);
 
 
 

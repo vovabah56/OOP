@@ -15,49 +15,7 @@ public class Tournament {
     private final TournamentGrid grid;
     private final SportType sportType;
 
-    public void displayTournament() throws IOException {
-        getJFrame();
-        jFrame.setVisible(true);
-
-    }
-
-    JFrame jFrame = new JFrame("Tournament");
-
-    private void getJFrame() throws IOException {
-
-        jFrame.setVisible(true);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(1500, 700);
-
-        jFrame.setLayout(new BorderLayout());
-        JPanel jPanel = new JPanel(new GridLayout(Participants.size(), 1));
-
-        for (int i = 0; i < Participants.size(); i++) {
-            BufferedImage image = ImageIO.read(new File("img\\teamSpirit.jpg"));
-            Image logo = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-            JLabel picLabel = new JLabel(new ImageIcon(logo));
-            JLabel descriptionLabel1 = new JLabel(Participants.get(i).getDescription());
-            JPanel f = new JPanel();
-            f.add(picLabel, BorderLayout.WEST);
-            JPanel descriptionAndName = new JPanel(new GridLayout(2, 1));
-            descriptionAndName.add(new Label(Participants.get(i).getTeamName()));
-
-            descriptionAndName.add(descriptionLabel1);
-            f.add(descriptionAndName, BorderLayout.WEST);
-            jPanel.add(f, BorderLayout.WEST);
-        }
-
-        jFrame.add(jPanel, BorderLayout.WEST);
-
-        jFrame.add(grid.generateGridUI(this), BorderLayout.CENTER);
-
-        JButton startTournament = new JButton("Start");
-        startTournament.addActionListener(new GridUI(this));
-
-        jFrame.add(startTournament, BorderLayout.EAST);
-    }
-
-    private final String name;
+    private String name;
 
     private ArrayList<Match> Matchs;      //НОВОЕ СВОЙСТВО - ВСЕ ИГРЫ ЗА ТУРНИР
 
@@ -86,6 +44,10 @@ public class Tournament {
 
     public String getName() {
         return name;
+    }
+
+    public TournamentGrid getGrid() {
+        return grid;
     }
 
     public void addTeam(Team team) {
@@ -121,10 +83,8 @@ public class Tournament {
 
 
     public void startTour() throws IOException {
+
         grid.generateGrid(this);
-        grid.setResultInGrid();
-        jFrame.add(new Label("Победитель: " + grid.getWinner()), BorderLayout.NORTH);
-        displayTournament();
         isFinished = true;
     }
 }

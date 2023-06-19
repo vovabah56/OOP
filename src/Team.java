@@ -21,11 +21,25 @@ public class Team {
         this.matches = new ArrayList<Match>();
     }
 
+    public String getLogo() {
+        return logo;
+    }
 
     public String getTeamName() {
         return teamName;
     }
 
+//    public void displayLogo(JPanel) throws IOException {
+//        BufferedImage image = ImageIO.read(new File(this.logo));
+//        Image logo =  image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+//        JLabel picLabel = new JLabel(new ImageIcon(logo));
+//        JPanel jPanel = new JPanel();
+//        jPanel.add(picLabel);
+//        JFrame display = new JFrame();
+//        display.setSize(600, 600);
+//        display.add(jPanel);
+//        display.setVisible(true);
+//    }
 
     public void setLogo(String logo) {
         this.logo = logo;
@@ -39,19 +53,10 @@ public class Team {
         this.description = description;
     }
 
-    // Передает сам массив игроков команды, для печати используем for в main(костыль для теста)
     public ArrayList<Player> getPlayers() {
         return players;
     }
-//Надо писать везде в функциях this.### или можно просто вызов переменной. То есть так:
-//    public void addPlayerByName(Player player) {
-//        this.players.add(player);
-//    }
-//
-//    public void deletePlayerByName(Player player) {
-//        this.players.remove(player);
-//    }
-// Или так?
+
     public void addPlayerByName(Player player) {
         players.add(player);
     }
@@ -69,6 +74,14 @@ public class Team {
         matches.add(match);
     }
 
+    /*public JComponent displayTeam() {
+        JComponent teamD = new Box(BoxLayout.X_AXIS);
+        Image image = new ImageIcon("img/teamSpirit.jpg").getImage();
+
+        teamD.add(image);
+
+        return teamD;
+    }*/
 
     public int getPower() {
         int power = 0;
