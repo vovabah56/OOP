@@ -99,9 +99,9 @@ public class Menu {
     }
 
     public static void PlayerAddMenu(TournamentSystem tournamentSystem) {
-        JFrame display = createDisplayOfAdditionalMenu(tournamentSystem);
+        JFrame display = new AddPlayerUI(tournamentSystem);
 
-        JPanel content = new JPanel();
+        /*JPanel content = new JPanel();
         JTextField namePlayerJ = new JTextField("Name",40);
         JTextField sportPlayerJ = new JTextField("Sport",40);
         JTextField skillPlayerJ = new JTextField("Skill",40);
@@ -121,7 +121,7 @@ public class Menu {
 
 
         content.add(namePlayerJ);
-        display.add(content);
+        display.add(content);*/
 
         display.setVisible(true);
     }

@@ -116,7 +116,7 @@ public class CreateTournamentUI extends JFrame {
                 }
             }
 
-            if(newTournament.getParticipants().size()<2){
+            if(newTournament.getParticipants().size() < 2){
                 JOptionPane.showMessageDialog(new JOptionPane(),
                         "Добавь команд гений!!!",
                         "Ошибка", JOptionPane.INFORMATION_MESSAGE);
@@ -136,10 +136,9 @@ public class CreateTournamentUI extends JFrame {
                     return ;
                 }
             }
-
             try {
-                newTournament.displayTournament();
-            } catch (IOException ex) {
+                TournamentUI t = new TournamentUI(newTournament);
+            } catch (NoSuchFieldException ex) {
                 throw new RuntimeException(ex);
             }
         }
