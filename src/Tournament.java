@@ -1,16 +1,11 @@
 
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 public class Tournament {
     private Boolean isFinished;
-    private ArrayList<Team> Participants;
+    private Vector<Team> Participants;
     public Vector<String> teamsName = new Vector<>();
     private final TournamentGrid grid;
     private final SportType sportType;
@@ -24,7 +19,7 @@ public class Tournament {
         this.name = name;
         this.sportType = sportType;
         this.isFinished = false;
-        this.Participants = new ArrayList<Team>();
+        this.Participants = new Vector<>();
         this.Matchs = new ArrayList<Match>();
         this.grid = grid;
 
@@ -34,7 +29,7 @@ public class Tournament {
         return isFinished;
     }
 
-    public ArrayList<Team> getParticipants() {
+    public Vector<Team> getParticipants() {
         return Participants;
     }
 

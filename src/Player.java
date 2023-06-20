@@ -13,6 +13,7 @@ public class Player{
         this.skill = skill;
         this.team = team;
         this.matches = new ArrayList<Match>();
+        team.addPlayerByName(this);
     }
 
 

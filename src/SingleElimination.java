@@ -6,23 +6,26 @@ public class SingleElimination extends TournamentGrid{
     private Team winTeam;
 
     @Override
-    public Vector<Vector<Match>> generateGrid(Tournament tournament) {
-        Vector<String> res = new Vector<>();
-        Match lastMatch = new Match(tournament.getParticipants().get(0), tournament.getParticipants().get(1));
+    public void generateGrid(Tournament tournament) {
+        Vector<Team> res = new Vector<>();
+        Team lastWinner = new Team(null, null, null);
+        Match lastMatch;
 
-        for (int i = 1; i < tournament.getParticipants().size(); i++){
-            Team win = lastMatch.getWinner();
-            res.add(win.getTeamName());
-            lastMatch = new Match(win, tournament.getParticipants().get(i));
+        for(Team team: tournament.getParticipants()){
+            lastMatch = new Match(lastWinner, team);
+            lastWinner = lastMatch.getWinner();
+            res.add(lastWinner);
         }
-        resultMatchs.add(res);
-        return matches;
+        res.remove(0);
+        winTeam = lastWinner;
+        System.out.println(res);
 
+        resultMatchs.add(res);
     }
 
 
     @Override
     public String getWinner() {
-        return resultMatchs.get(0).get(resultMatchs.size()-1);
+        return winTeam.getTeamName();
     }
 }

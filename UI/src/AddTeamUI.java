@@ -3,24 +3,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddPlayerUI extends JFrame {
-    private JButton button = new JButton("Create Player");
+public class AddTeamUI extends JFrame {
+    private JButton button = new JButton("Create Team");
     private JTextField input = new JTextField("");
-    private JLabel label = new JLabel("Name Player:");
+    private JLabel label = new JLabel("Name Team:");
+    private JTextField inputDis = new JTextField("");
+    private JLabel labelDis = new JLabel("Input Description:");
     private JLabel textForSport = new JLabel("Choice of sport:");
     private JRadioButton radioButtonFootball = new JRadioButton("Football");
     private JRadioButton radioButtonBasketball = new JRadioButton("Basketball");
-    public JPanel radioSportType = new JPanel(new FlowLayout());
     JRadioButton radioButtonHokey = new JRadioButton("Hokey");
-    JComboBox<String> teams;
-    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-    JSlider sliderSkil = new JSlider(14, 57, 20);
+    public JPanel radioSportType = new JPanel(new FlowLayout());
+
+
     public  void closeW(){
         this.setVisible(false);
     }
 
-    public AddPlayerUI(TournamentSystem tournamentSystem){
-        super("Check teams");
+    public AddTeamUI(TournamentSystem tournamentSystem){
+        super("Add team");
         this.setBounds(100, 100, 960, 540);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -29,6 +30,8 @@ public class AddPlayerUI extends JFrame {
 
         container.add(label);
         container.add(input);
+        container.add(labelDis);
+        container.add(inputDis);
         JButton back = new JButton("Back");
 
 
@@ -51,31 +54,22 @@ public class AddPlayerUI extends JFrame {
         radioSportType.add(radioButtonHokey);
         radioSportType.add(radioButtonBasketball);
 
-        for (int i = 0; i < tournamentSystem.getTeams().size();i++){
-            model.addElement(tournamentSystem.getTeams().get(i).getTeamName());
-        }
-        teams = new JComboBox<>(model);
-        JPanel itt = new JPanel(new FlowLayout());
-        itt.add(teams);
-        container.add(itt);
         container.add(radioSportType);
-        button.addActionListener(new CreatePlayer(tournamentSystem));
+        button.addActionListener(new CreateTeam(tournamentSystem));
         container.add(button);
-        sliderSkil.setPaintLabels(true);
-        sliderSkil.setMajorTickSpacing(5);
-        container.add(sliderSkil);
+
         container.add(back);
 
     }
 
-    class CreatePlayer implements ActionListener {
+    class CreateTeam implements ActionListener {
         TournamentSystem tournamentSystem;
-        public CreatePlayer(TournamentSystem tournamentSystem){
+        public CreateTeam(TournamentSystem tournamentSystem){
             this.tournamentSystem = tournamentSystem;
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            Team team = tournamentSystem.getTeamMap().get(teams.getSelectedItem());
+            Team team = new Team(input.getText(), null, inputDis.getText());
             SportType sportType;
             if(radioButtonBasketball.isSelected()){
                 sportType = new Backetball();
@@ -85,13 +79,8 @@ public class AddPlayerUI extends JFrame {
             else {
                 sportType = new Hockey();
             }
-            Boolean ok = team.addPlayerByName(new Player(input.getText(), sportType, sliderSkil.getValue(), team));
-            if(!ok){
-                JOptionPane.showMessageDialog(new JOptionPane(),
-                        "Неверно выбран вид спорта.",
-                        "Ошибка", JOptionPane.INFORMATION_MESSAGE);
-
-            }
+            team.setSportType(sportType);
+            tournamentSystem.addTeam(team);
         }
     }
 }

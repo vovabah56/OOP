@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.util.Vector;
 
 public abstract class TournamentGrid {
-    private Integer gridSize;
+    protected Integer gridSize;
 
-    protected Vector<Vector<String>> resultMatchs = new Vector<Vector<String>>();
+    protected Vector<Vector<Team>> resultMatchs = new Vector<>();
     protected Boolean isFinished;
 
     protected Vector<Vector<Match>> matches = new Vector<>();
@@ -16,7 +16,11 @@ public abstract class TournamentGrid {
         return gridSize;
     }
 
-    public abstract Vector<Vector<Match>> generateGrid(Tournament tournament);
+    public void setGridSize(Integer gridSize) {
+        this.gridSize = gridSize;
+    }
+
+    public abstract void generateGrid(Tournament tournament);
 
     public abstract String getWinner();
 }

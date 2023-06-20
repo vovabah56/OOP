@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Vector;
 
 public abstract class SportType {
     private int howManyOnTeam;
@@ -18,11 +19,11 @@ public abstract class SportType {
 
 class Football extends SportType{
     int howManyOnTeam = 11;
-    public String nameSport = "Football";
+
     double timeOnGame = 90.0;
     @Override
     public boolean checkTeam(Team team) {
-        ArrayList<Player> arrayPlayers = team.getPlayers();
+        Vector<Player> arrayPlayers = team.getPlayers();
         if(arrayPlayers.size() < 11){
             return false;
         }
@@ -45,11 +46,10 @@ class Football extends SportType{
 
 class Hockey extends SportType{
     int howManyOnTeam = 6;
-    public String nameSport = "Hokey";
     double timeOnGame = 60.0;
     @Override
     public boolean checkTeam(Team team) {
-        ArrayList<Player> arrayPlayers = team.getPlayers();
+        Vector<Player> arrayPlayers = team.getPlayers();
         if(arrayPlayers.size() < 6){
             return false;
         }
@@ -70,11 +70,10 @@ class Hockey extends SportType{
 
 class Backetball extends SportType{
     int howManyOnTeam = 5;
-    public String nameSport = "Basketball";
     double timeOnGame = 48.0;
     @Override
     public boolean checkTeam(Team team) {
-        ArrayList<Player> arrayPlayers = team.getPlayers();
+        Vector<Player> arrayPlayers = team.getPlayers();
         if(arrayPlayers.size() < 5){
             return false;
         }

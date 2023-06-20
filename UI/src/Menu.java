@@ -54,15 +54,16 @@ public class Menu {
             }
         });
 
-        JButton playerAddInTeam = new JButton("Add Player in Team");
-        playerAddInTeam.addActionListener(new ActionListener() {
+        JButton removePlayer = new JButton("Remove player");
+        removePlayer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 display.dispatchEvent(new WindowEvent(display, WindowEvent.WINDOW_CLOSING));
-                playerAddInTeamMenu(tournamentSystem);
+                removePlayer(tournamentSystem);
 
             }
         });
+
         JButton checkTeam = new JButton("Check team");
         checkTeam.addActionListener(new ActionListener() {
             @Override
@@ -85,7 +86,7 @@ public class Menu {
 
         display.add(playersAdd);
         display.add(teamAdd);
-        display.add(playerAddInTeam);
+        display.add(removePlayer);
         display.add(checkTeam);
         display.add(createTournament);
         display.setVisible(true);
@@ -101,39 +102,18 @@ public class Menu {
     public static void PlayerAddMenu(TournamentSystem tournamentSystem) {
         JFrame display = new AddPlayerUI(tournamentSystem);
 
-        /*JPanel content = new JPanel();
-        JTextField namePlayerJ = new JTextField("Name",40);
-        JTextField sportPlayerJ = new JTextField("Sport",40);
-        JTextField skillPlayerJ = new JTextField("Skill",40);
-        JTextField teamPlayerJ = new JTextField("Team", 40);
-
-        namePlayerJ.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String name = namePlayerJ.getText();
-            }
-        });
-
-        sportPlayerJ.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String name = sportPlayerJ.getText();
-            }
-        });
-
-
-        content.add(namePlayerJ);
-        display.add(content);*/
 
         display.setVisible(true);
     }
     public static void teamAddMenu(TournamentSystem tournamentSystem) {
-        JFrame display = createDisplayOfAdditionalMenu(tournamentSystem);
+        JFrame display = new AddTeamUI(tournamentSystem);
 
 
         display.setVisible(true);
     }
 
-    public static void playerAddInTeamMenu(TournamentSystem tournamentSystem) {
-        JFrame display = createDisplayOfAdditionalMenu(tournamentSystem);
+    public static void removePlayer(TournamentSystem tournamentSystem) {
+        JFrame display = new RemovePlayerUI(tournamentSystem);
 
         display.setVisible(true);
     }

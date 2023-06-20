@@ -8,7 +8,7 @@ public class RoundRobinGrid extends TournamentGrid {
 
 
     @Override
-    public Vector<Vector<Match>> generateGrid(Tournament tournament) {
+    public void generateGrid(Tournament tournament) {
 
         cntWinForTeams.add(new Vector<String>());
         cntWinForTeams.add(new Vector<>());
@@ -16,7 +16,7 @@ public class RoundRobinGrid extends TournamentGrid {
 
             Vector<Match> matchsForTeam = new Vector<>();
 
-            Vector nameWinners = new Vector<>();
+            Vector<Team> nameWinners = new Vector<>();
             for (int j = 0; j < tournament.getParticipants().size(); j++) {
                 cntWinForTeams.get(0).add(tournament.getParticipants().get(j).getTeamName());
 
@@ -30,7 +30,7 @@ public class RoundRobinGrid extends TournamentGrid {
                     Match match = new Match(firstTeam, secondTeam);
                     matchsForTeam.add(match);
 
-                    nameWinners.add(i == j? "---":match.getWinner().getTeamName());
+                    nameWinners.add(i == j? new Team("---", null, null):match.getWinner());
                     int indWinner = cntWinForTeams.get(0).indexOf(match.getWinner().getTeamName());
 
                     cntWinForTeams.get(1).set(indWinner, (Integer) cntWinForTeams.get(1).get(indWinner) + 1);
@@ -41,10 +41,7 @@ public class RoundRobinGrid extends TournamentGrid {
             resultMatchs.add(nameWinners);
         }
 
-        return matches;
     }
-
-
 
     @Override
     public String getWinner() {

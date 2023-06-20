@@ -6,8 +6,6 @@ import java.awt.event.WindowEvent;
 
 public class CheckTeamUI extends JFrame {
 
-
-
     JPanel players = new JPanel(new GridLayout(11,1));
     JComboBox<String> teams;
     DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
@@ -44,7 +42,7 @@ public class CheckTeamUI extends JFrame {
 
             }
         });
-
+        container.add(back);
     }
 
     class ShowPlayers implements ActionListener {
