@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 public class CheckTeamUI extends JFrame {
 
     JPanel players = new JPanel(new GridLayout(11,1));
+    JPanel matches = new JPanel(new FlowLayout());
     JComboBox<String> teams;
     DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
     JButton buttonShowPlayers = new JButton("Show");
@@ -15,7 +16,7 @@ public class CheckTeamUI extends JFrame {
     }
     public CheckTeamUI(TournamentSystem tournamentSystem){
         super("Check teams");
-        this.setBounds(100, 100, 960, 540);
+        this.setBounds(100, 100, 1260, 540);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container container = this.getContentPane();
@@ -29,6 +30,7 @@ public class CheckTeamUI extends JFrame {
         itt.add(teams);
         itt.add(buttonShowPlayers);
         container.add(itt);
+
         container.add(players);
         JButton back = new JButton("Back");
 
@@ -57,6 +59,7 @@ public class CheckTeamUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
             Team team = tournamentSystem.getTeamMap().get(teams.getSelectedItem());
             container.remove(1);
+            players.removeAll();
             players = new JPanel(new FlowLayout());
             for (int i = 0; i < team.getPlayers().size(); i++){
                 Player pl = team.getPlayers().get(i);
@@ -71,8 +74,26 @@ public class CheckTeamUI extends JFrame {
                 player.add(teamP);
                 players.add(player);
             }
+
             players.updateUI();
+            matches.removeAll();
+            matches.add(new JLabel("MATCHES"));
+            for (int i = 0; i < team.getMatches().size(); i++){
+                Match mt = team.getMatches().get(i);
+                JPanel mtUI = new JPanel(new FlowLayout());
+                JLabel name = new JLabel("Team first: " + mt.getTeamFirst().getTeamName());
+                JLabel sport = new JLabel("Team second: " + mt.getTeamSecond().getTeamName());
+                JLabel skill = new JLabel("Winner: " + mt.getWinner().getTeamName());
+
+                mtUI.add(name);
+                mtUI.add(sport);
+                mtUI.add(skill);
+                matches.add(mtUI);
+            }
+            matches.updateUI();
+
             container.add(players);
+            container.add(matches);
 
         }
     }

@@ -91,14 +91,6 @@ public class Team {
         matches.add(match);
     }
 
-    /*public JComponent displayTeam() {
-        JComponent teamD = new Box(BoxLayout.X_AXIS);
-        Image image = new ImageIcon("img/teamSpirit.jpg").getImage();
-
-        teamD.add(image);
-
-        return teamD;
-    }*/
 
     public int getPower() {
         int power = 0;

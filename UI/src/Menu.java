@@ -114,7 +114,6 @@ public class Menu {
 
     public static void removePlayer(TournamentSystem tournamentSystem) {
         JFrame display = new RemovePlayerUI(tournamentSystem);
-
         display.setVisible(true);
     }
 

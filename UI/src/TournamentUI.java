@@ -16,12 +16,15 @@ public class TournamentUI extends JFrame {
     JTable grid;
     JTree olympicGrid;
 
-    public TournamentUI(Tournament tournament) throws NoSuchFieldException {
+    public  void closeW(){
+        this.setVisible(false);
+    }
+    public TournamentUI(Tournament tournament, TournamentSystem tournamentSystem) throws NoSuchFieldException {
         jFrame.setTitle(tournament.getName());
 
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(1500, 900);
+        jFrame.setSize(1500, 800);
 
         jFrame.setLayout(new BorderLayout());
         JPanel jPanel = new JPanel(new GridLayout(tournament.getParticipants().size(), 1));
@@ -49,7 +52,20 @@ public class TournamentUI extends JFrame {
 
         });
 
+        JButton back = new JButton("Back");
 
+
+
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                closeW();
+                Menu.MainMenu(tournamentSystem);
+
+            }
+        });
+        jFrame.add(back, BorderLayout.SOUTH);
         jFrame.add(jPanel, BorderLayout.WEST);
 
         if (tournament.getGrid() instanceof RoundRobinGrid) {

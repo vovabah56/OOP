@@ -13,6 +13,10 @@ public class SingleElimination extends TournamentGrid{
 
         for(Team team: tournament.getParticipants()){
             lastMatch = new Match(lastWinner, team);
+
+            team.addMatch(lastMatch);
+            lastWinner.addMatch(lastMatch);
+
             lastWinner = lastMatch.getWinner();
             res.add(lastWinner);
         }

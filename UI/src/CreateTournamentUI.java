@@ -145,10 +145,10 @@ public class CreateTournamentUI extends JFrame {
                 }
             }
 
-
+            closeW();
 
             try {
-                TournamentUI t = new TournamentUI(newTournament);
+                TournamentUI t = new TournamentUI(newTournament, tournamentSystem);
             } catch (NoSuchFieldException ex) {
                 throw new RuntimeException(ex);
             }

@@ -23,7 +23,11 @@ public class OlympicGrid extends TournamentGrid{
                 if(j+1 == currentRound.size()){
                     if (i == gridSize - 1) {
                         Team player2 = matches.get(0).get(matches.size()-1).defineWins();
+
                         Match matchResult = new Match(player1, player2);
+                        player1.addMatch(matchResult);
+                        player2.addMatch(matchResult);
+
                         matches.get(0).add(matchResult);
                         nextRound.add(matchResult.defineWins());
                     }
@@ -37,12 +41,15 @@ public class OlympicGrid extends TournamentGrid{
                 }
                 else {
                     Team player2 = currentRound.get(j + 1);
+
                     Match matchResult = new Match(player1, player2);
+                    player1.addMatch(matchResult);
+                    player2.addMatch(matchResult);
+
                     matches.get(0).add(matchResult);
                     nextRound.add(matchResult.defineWins());
                 }
             }
-
             resultMatchs.add(nextRound);
         }
         isFinished = true;

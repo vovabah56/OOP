@@ -1,33 +1,30 @@
-import java.util.ArrayList;
 import java.util.Vector;
 
 public abstract class SportType {
-    private int howManyOnTeam;
-    private double timeOnGame;
+    protected int cntPlayersOnTeam;
+
     public String nameSport;
-    public int getHowManyOnTeam() {
-        return howManyOnTeam;
+
+    public int getCntPlayersOnTeam() {
+        return cntPlayersOnTeam;
     }
 
-    public double getTimeOnGame() {
-        return timeOnGame;
-    }
     abstract public boolean checkTeam(Team team);
+
     abstract public String getNameSport();
 
 }
 
-class Football extends SportType{
-    int howManyOnTeam = 11;
+class Football extends SportType {
 
-    double timeOnGame = 90.0;
     @Override
     public boolean checkTeam(Team team) {
+        cntPlayersOnTeam = 11;
         Vector<Player> arrayPlayers = team.getPlayers();
-        if(arrayPlayers.size() < 11){
+        if (arrayPlayers.size() < cntPlayersOnTeam) {
             return false;
         }
-        for(int i = 0; i < team.getPlayers().size(); i++) {
+        for (int i = 0; i < team.getPlayers().size(); i++) {
             Player player = arrayPlayers.get(i);
             if (!(player.getSport() instanceof Football)) {
                 return false;
@@ -44,16 +41,17 @@ class Football extends SportType{
 
 }
 
-class Hockey extends SportType{
-    int howManyOnTeam = 6;
-    double timeOnGame = 60.0;
+class Hockey extends SportType {
+
+
     @Override
     public boolean checkTeam(Team team) {
+        cntPlayersOnTeam = 6;
         Vector<Player> arrayPlayers = team.getPlayers();
-        if(arrayPlayers.size() < 6){
+        if (arrayPlayers.size() < cntPlayersOnTeam) {
             return false;
         }
-        for(int i = 0; i < team.getPlayers().size(); i++) {
+        for (int i = 0; i < team.getPlayers().size(); i++) {
             Player player = arrayPlayers.get(i);
             if (!(player.getSport() instanceof Hockey)) {
                 return false;
@@ -68,16 +66,16 @@ class Hockey extends SportType{
     }
 }
 
-class Backetball extends SportType{
-    int howManyOnTeam = 5;
-    double timeOnGame = 48.0;
+class Backetball extends SportType {
+
     @Override
     public boolean checkTeam(Team team) {
+        cntPlayersOnTeam = 5;
         Vector<Player> arrayPlayers = team.getPlayers();
-        if(arrayPlayers.size() < 5){
+        if (arrayPlayers.size() < cntPlayersOnTeam) {
             return false;
         }
-        for(int i = 0; i < team.getPlayers().size(); i++) {
+        for (int i = 0; i < team.getPlayers().size(); i++) {
             Player player = arrayPlayers.get(i);
             if (!(player.getSport() instanceof Backetball)) {
                 return false;
