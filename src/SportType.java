@@ -1,37 +1,91 @@
-import java.util.ArrayList;
+import java.util.Vector;
 
-public class SportType {
-    private int howManyOnTeam;
-    private double timeOnGame;
+public abstract class SportType {
+    protected int cntPlayersOnTeam;
 
-    public int getHowManyOnTeam() {
-        return howManyOnTeam;
+    public String nameSport;
+
+    public int getCntPlayersOnTeam() {
+        return cntPlayersOnTeam;
     }
 
-    public double getTimeOnGame() {
-        return timeOnGame;
-    }
+    abstract public boolean checkTeam(Team team);
 
-//    public boolean checkTeam(Team teamFirst, Team teamSecond) {
-//        ArrayList<Player> arrayPlayersFirstTeam = teamFirst.getPlayers();
-//        ArrayList<Player> arrayPlayersSecondTeam = teamSecond.getPlayers();
-//
-//
-//    }
+    abstract public String getNameSport();
+
 }
 
-//class Football extends SportType{
-//    int howManyOnTeam = 11;
-//    int sportID = 1;
-//    double timeOnGame = 90.0;
-//    public boolean checkTeam(Team team) {
-//        ArrayList<Player> arrayPlayers = team.getPlayers();
-//        for(int i = 0; i < 11; i++) {
-//            Player player = arrayPlayers.get(i);
-//            if Football != player.getSport() {
-//                return false
-//            }
-//        }
-//        return true
-//    }
-//}
+class Football extends SportType {
+
+    @Override
+    public boolean checkTeam(Team team) {
+        cntPlayersOnTeam = 11;
+        Vector<Player> arrayPlayers = team.getPlayers();
+        if (arrayPlayers.size() < cntPlayersOnTeam) {
+            return false;
+        }
+        for (int i = 0; i < team.getPlayers().size(); i++) {
+            Player player = arrayPlayers.get(i);
+            if (!(player.getSport() instanceof Football)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public String getNameSport() {
+        return "Football";
+    }
+
+
+}
+
+class Hockey extends SportType {
+
+
+    @Override
+    public boolean checkTeam(Team team) {
+        cntPlayersOnTeam = 6;
+        Vector<Player> arrayPlayers = team.getPlayers();
+        if (arrayPlayers.size() < cntPlayersOnTeam) {
+            return false;
+        }
+        for (int i = 0; i < team.getPlayers().size(); i++) {
+            Player player = arrayPlayers.get(i);
+            if (!(player.getSport() instanceof Hockey)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public String getNameSport() {
+        return "Hokey";
+    }
+}
+
+class Backetball extends SportType {
+
+    @Override
+    public boolean checkTeam(Team team) {
+        cntPlayersOnTeam = 5;
+        Vector<Player> arrayPlayers = team.getPlayers();
+        if (arrayPlayers.size() < cntPlayersOnTeam) {
+            return false;
+        }
+        for (int i = 0; i < team.getPlayers().size(); i++) {
+            Player player = arrayPlayers.get(i);
+            if (!(player.getSport() instanceof Backetball)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public String getNameSport() {
+        return "Basketball";
+    }
+}

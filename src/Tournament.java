@@ -1,28 +1,35 @@
-import javax.lang.model.element.Name;
+
+
+import java.io.IOException;
 import java.util.*;
 
 public class Tournament {
     private Boolean isFinished;
-    private ArrayList<Team> Participants;
-    private SportType sportType;
+    private Vector<Team> Participants;
+    public Vector<String> teamsName = new Vector<>();
+    private final TournamentGrid grid;
+    private final SportType sportType;
+
     private String name;
+
     private ArrayList<Match> Matchs;      //НОВОЕ СВОЙСТВО - ВСЕ ИГРЫ ЗА ТУРНИР
 
-    /*private TournamentGrid grid;*/
 
-    public Tournament(String name, SportType sportType) {
+    public Tournament(String name, SportType sportType, TournamentGrid grid) {
         this.name = name;
         this.sportType = sportType;
         this.isFinished = false;
-        this.Participants = new ArrayList<Team>();
+        this.Participants = new Vector<>();
         this.Matchs = new ArrayList<Match>();
+        this.grid = grid;
+
     }
 
     public Boolean getFinished() {
         return isFinished;
     }
 
-    public ArrayList<Team> getParticirants() {
+    public Vector<Team> getParticipants() {
         return Participants;
     }
 
@@ -34,20 +41,35 @@ public class Tournament {
         return name;
     }
 
+    public TournamentGrid getGrid() {
+        return grid;
+    }
+
     public void addTeam(Team team) {
         if (Participants.contains(team)) return;
         Participants.add(team);
+
+        if (teamsName.isEmpty()) {
+            teamsName.add("  ");
+            teamsName.add(team.getTeamName());
+        } else {
+            teamsName.add(team.getTeamName());
+        }
     }
 
     public void removeTeam(Team team) {
-        if(Participants.contains(team)) {
+        if (Participants.contains(team)) {
             Participants.remove(team);
         }
     }
 
-    public void setSport(SportType sportType) {
-        this.sportType = sportType;
+    public Boolean checkParticipants(){
+        for(int i = 0; i < Participants.size(); i++){
+            if(!sportType.checkTeam(Participants.get(i))) return false;
+        }
+        return true;
     }
+
 
     public void addMatch(Match match) {
         if (Matchs.contains(match)) return;
@@ -55,24 +77,9 @@ public class Tournament {
     }
 
 
-    // Временно, пока нет сеток
-    public Team getWinner() {
-        ArrayList<Integer> cntWin = new ArrayList<>(Participants.size());
+    public void startTour() throws IOException {
 
-        for (int i = 0; i < Participants.size(); i++) {
-            cntWin.add(0);
-        }
-
-        // проходим по всем матчам и увеличиваем значение в индексе победителя
-        for (int i = 0; i < Matchs.size(); i++) {
-            int t = cntWin.get(Participants.indexOf(Matchs.get(i).defineWins()));
-            cntWin.set(Participants.indexOf(Matchs.get(i).defineWins()), t + 1);
-
-        }
-
-        // возвращаем команду с наибольшим количеством побед
-        return Participants.get(cntWin.indexOf(Collections.max(cntWin)));
+        grid.generateGrid(this);
+        isFinished = true;
     }
-
-
 }

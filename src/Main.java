@@ -1,45 +1,37 @@
-import javax.swing.*;
 import java.io.IOException;
-
 public class Main {
     public static void main(String[] args) throws IOException {
-        Team virtus = new Team("Virtus_Pro", "img/Virtus.proLogo.png", "My mind is empty, i dont understand anythink");
 
-//        virtus.getLogo();
-//        System.out.println(virtus.getTeamName());
-//        System.out.println(virtus.getDescription());
-//        virtus.setDescription("I love your house");
-//        System.out.println(virtus.getDescription());
 
-        Team spirit = new Team("Team_Spirit", "img/teamSpirit.jpg", "Winner TI10");
+        TournamentSystem tournamentSystem = new TournamentSystem();
+        tournamentSystem.addTeam(Database.amur);
+        tournamentSystem.addTeam(Database.akBars);
+        tournamentSystem.addTeam(Database.avtomobilist);
+        tournamentSystem.addTeam(Database.akronTogliatti);
+        tournamentSystem.addTeam(Database.atlantaHawks);
+        tournamentSystem.addTeam(Database.bostonCeltics);
+        tournamentSystem.addTeam(Database.cska);
+        tournamentSystem.addTeam(Database.chicagoBulls);
+        tournamentSystem.addTeam(Database.denverNuggets);
+        tournamentSystem.addTeam(Database.manchester);
+        tournamentSystem.addTeam(Database.krylyaSovetov);
+        tournamentSystem.addTeam(Database.miamiHeat);
+        tournamentSystem.addTeam(Database.khimki);
+        tournamentSystem.addTeam(Database.kamAZ);
+        tournamentSystem.addTeam(Database.lokomotiv);
+        tournamentSystem.addTeam(Database.metallurg);
+        tournamentSystem.addTeam(Database.milwaukeeBucks);
+        tournamentSystem.addTeam(Database.newYorkKnicks);
+        tournamentSystem.addTeam(Database.orenburg);
+        tournamentSystem.addTeam(Database.torontoRaptors);
+        tournamentSystem.addTeam(Database.torpedo);
+        tournamentSystem.addTeam(Database.traktor);
+        tournamentSystem.addTeam(Database.spartak);
+        tournamentSystem.addTeam(Database.sibir);
 
-        Player Max = new Player("Max N", 15, spirit);
-        Player Oleg = new Player("Oleg Mongol", 60, spirit);
-//        System.out.println(Max.getPlayerName());
-//        Max.setSkill(1000);
-//        System.out.println(Max.getSkill());
-//        System.out.println(Max.getMatches());
-//        spirit.addPlayerByName(Max);
-//        spirit.addPlayerByName(Oleg);
-//        spirit.deletePlayerByName(Max);
-//        ArrayList<Player> a = spirit.getPlayers();
-//        for (int i = 0; i < a.size(); i++) {
-//            System.out.println(a.get(i).getPlayerName());
-//        }
+       Menu.MainMenu(tournamentSystem);
 
-//        virtus.addPlayerByName(Max);
-//        spirit.addPlayerByName(Oleg);
-//        Match b = new Match(spirit, virtus);
-//        System.out.println(b.defineWins());
 
-//        JLabel picLabel = new JLabel(new ImageIcon(spirit.getLogo()));
-//        JPanel jPanel = new JPanel();
-//        jPanel.add(picLabel);
-//        JFrame display = new JFrame();
-//        display.setSize(600, 600);
-//        display.add(jPanel);
-//        display.setVisible(true);
+
     }
-
-
 }
