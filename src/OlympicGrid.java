@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class OlympicGrid extends TournamentGrid{
+public class OlympicGrid extends TournamentGrid {
 
     @Override
     public void generateGrid(Tournament tournament) {
@@ -20,9 +20,9 @@ public class OlympicGrid extends TournamentGrid{
 
             for (int j = 0; j < currentRound.size(); j += 2) {
                 Team player1 = currentRound.get(j);
-                if(j+1 == currentRound.size()){
+                if (j + 1 == currentRound.size()) {
                     if (i == gridSize - 1) {
-                        Team player2 = matches.get(0).get(matches.size()-1).defineWins();
+                        Team player2 = matches.get(0).get(matches.size() - 1).defineWins();
 
                         Match matchResult = new Match(player1, player2);
                         player1.addMatch(matchResult);
@@ -30,16 +30,14 @@ public class OlympicGrid extends TournamentGrid{
 
                         matches.get(0).add(matchResult);
                         nextRound.add(matchResult.defineWins());
-                    }
-                    else {
+                    } else {
                         nextRound.add(player1);
                         Team loser = new Team("---", null, "");
                         Match matchResult = new Match(player1, loser);
                         matches.get(0).add(matchResult);
                     }
 
-                }
-                else {
+                } else {
                     Team player2 = currentRound.get(j + 1);
 
                     Match matchResult = new Match(player1, player2);
@@ -56,11 +54,9 @@ public class OlympicGrid extends TournamentGrid{
     }
 
 
-
-
     @Override
     public String getWinner() {
 
-        return resultMatchs.get(resultMatchs.size()-1).get(0).getTeamName();
+        return resultMatchs.get(resultMatchs.size() - 1).get(0).getTeamName();
     }
 }

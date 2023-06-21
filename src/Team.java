@@ -64,14 +64,14 @@ public class Team {
     }
 
     public Boolean addPlayerByName(Player player) {
-        if(sportType == null){
+        if (sportType == null) {
             sportType = player.getSport();
         }
-        if(player.getSport().getNameSport() == sportType.getNameSport()){
+        if (player.getSport().getNameSport() == sportType.getNameSport()) {
             players.add(player);
             return true;
         }
-       return false;
+        return false;
     }
 
     public SportType getSportType() {
@@ -86,8 +86,8 @@ public class Team {
         return matches;
     }
 
-    public void addMatch(Match match){
-        if(matches.contains(match)) return;
+    public void addMatch(Match match) {
+        if (matches.contains(match)) return;
         matches.add(match);
     }
 

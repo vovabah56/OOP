@@ -1,17 +1,15 @@
 import javax.swing.*;
 import java.util.Vector;
 
-public class SingleElimination extends TournamentGrid{
-
+public class SingleElimination extends TournamentGrid {
     private Team winTeam;
-
     @Override
     public void generateGrid(Tournament tournament) {
         Vector<Team> res = new Vector<>();
         Team lastWinner = new Team(null, null, null);
         Match lastMatch;
 
-        for(Team team: tournament.getParticipants()){
+        for (Team team : tournament.getParticipants()) {
             lastMatch = new Match(lastWinner, team);
 
             team.addMatch(lastMatch);
@@ -22,8 +20,6 @@ public class SingleElimination extends TournamentGrid{
         }
         res.remove(0);
         winTeam = lastWinner;
-        System.out.println(res);
-
         resultMatchs.add(res);
     }
 

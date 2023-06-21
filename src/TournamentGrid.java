@@ -6,8 +6,8 @@ public abstract class TournamentGrid {
 
     protected Vector<Vector<Team>> resultMatchs = new Vector<>();
     protected Boolean isFinished;
-
     protected Vector<Vector<Match>> matches = new Vector<>();
+
     public Boolean getFinished() {
         return isFinished;
     }

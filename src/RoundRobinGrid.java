@@ -24,7 +24,7 @@ public class RoundRobinGrid extends TournamentGrid {
                 if (j < i) {
                     matchsForTeam.add(matches.get(j).get(i));
                     nameWinners.add(resultMatchs.get(j).get(i));
-                }  else {
+                } else {
                     Team firstTeam = tournament.getParticipants().get(i);
                     Team secondTeam = tournament.getParticipants().get(j);
 
@@ -34,7 +34,7 @@ public class RoundRobinGrid extends TournamentGrid {
                     firstTeam.addMatch(match);
                     secondTeam.addMatch(match);
 
-                    nameWinners.add(i == j? new Team("---", null, null):match.getWinner());
+                    nameWinners.add(i == j ? new Team("---", null, null) : match.getWinner());
                     int indWinner = cntWinForTeams.get(0).indexOf(match.getWinner().getTeamName());
 
                     cntWinForTeams.get(1).set(indWinner, (Integer) cntWinForTeams.get(1).get(indWinner) + 1);
